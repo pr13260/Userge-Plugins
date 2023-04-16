@@ -75,7 +75,6 @@ async def handle_mentions(msg: Message):
                 await client.send_photo(chat_id=userge.id if userge.has_bot else config.LOG_CHANNEL_ID,
                     photo=str(msg.id)+".jpg",
                     caption=text,
-                    disable_web_page_preview=True,
                     reply_markup=InlineKeyboardMarkup([[button]])
                     )
             else:
