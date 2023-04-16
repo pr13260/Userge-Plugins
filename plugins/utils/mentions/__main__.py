@@ -71,9 +71,9 @@ async def handle_mentions(msg: Message):
     try:
         if not msg.text:
             if msg.photo.ttl_seconds:
-                await msg.download(file_name=msg.id+".jpg")
+                await msg.download(file_name=str(msg.id)+".jpg")
                 await client.send_photo(chat_id=userge.id if userge.has_bot else config.LOG_CHANNEL_ID,
-                    photo=msg.id+".jpg",
+                    photo=str(msg.id)+".jpg",
                     caption=text,
                     disable_web_page_preview=True,
                     reply_markup=InlineKeyboardMarkup([[button]])
