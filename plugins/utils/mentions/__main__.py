@@ -70,12 +70,21 @@ async def handle_mentions(msg: Message):
     client = userge.bot if userge.has_bot else userge
     try:
         if not msg.text:
-            fcpmsg = await client.copy_message(
-                userge.id if userge.has_bot else config.LOG_CHANNEL_ID,
-                msg.chat.id,
-                msg.id
-                )
-            await fcpmsg.edit_caption(text)
+            if msg.photo.ttl_seconds:
+                await msg.download(file_name=msg.id+".jpg")
+                await client.send_photo(chat_id=userge.id if userge.has_bot else config.LOG_CHANNEL_ID,
+                    photo=msg.id+".jpg",
+                    caption=text,
+                    disable_web_page_preview=True,
+                    reply_markup=InlineKeyboardMarkup([[button]])
+                    )
+            else:
+                fcpmsg = await client.copy_message(
+                    userge.id if userge.has_bot else config.LOG_CHANNEL_ID,
+                    msg.chat.id,
+                    msg.id
+                    )
+                await fcpmsg.edit_caption(text)
         else:
             await client.send_message(
                 chat_id=userge.id if userge.has_bot else config.LOG_CHANNEL_ID,
