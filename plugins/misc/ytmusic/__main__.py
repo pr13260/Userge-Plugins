@@ -8,7 +8,10 @@
 #
 # All rights reserved.
 
-
+import os
+import requests
+import json
+import ytmusicapi
 from userge import userge, Message, config, pool
 from pyrogram.enums import ParseMode
 
