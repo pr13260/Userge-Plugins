@@ -37,7 +37,7 @@ def get_ytm():
     videourl="https://www.youtube.com/watch?v="+cp['videoId']
     title=cp['title']
     album=cp['album']['name']
-    thumbnails=cp['thumbnails'][1]['url'] or cp['thumbnails'][0]['url']
+    thumbnails=f"https://img.youtube.com/vi/{cp['videoId']}/maxresdefault.jpg"
     artists=cp['artists']
     art=""
     count=0
