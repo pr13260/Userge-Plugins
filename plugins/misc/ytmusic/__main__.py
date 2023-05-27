@@ -22,7 +22,7 @@ from pyrogram.enums import ParseMode
 async def telegraph_(message: Message):
     await message.edit("`processing...`")
     thumbnail, title, album, art, videourl = get_ytm()
-    caption="**Currently Playing on "+message.from_user.first_name+"'s Device\n\n"
+    caption="Currently Playing on **"+message.from_user.first_name+"'s Device** Via YT Music\n\n"
     caption+=f"**{title}** From **{album}** By **{art}**\n"
     caption+=f"🔗 **[Watch On YT]({videourl})**"
     await message.reply_photo(photo=thumbnail, caption=caption)
