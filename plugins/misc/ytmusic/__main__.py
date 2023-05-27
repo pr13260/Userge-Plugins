@@ -1,4 +1,4 @@
-""" telegraph uploader """
+""" ytmusic """
 
 # Copyright (C) 2020-2022 by UsergeTeam@Github, < https://github.com/UsergeTeam >.
 #
