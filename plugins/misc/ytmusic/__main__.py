@@ -23,7 +23,7 @@ async def telegraph_(message: Message):
     await message.edit("`processing...`")
     thumbnail, title, album, art, videourl = get_ytm()
     caption="**Currently Playing on "+message.from_user.first_name+"'s Device\n\n"
-    caption+=f"{title} From {album} By {art}\n"
+    caption+=f"**{title}** From **{album}** By **{art}**\n"
     caption+=f"🔗 **[Watch On YT]({videourl})**"
     await message.reply_photo(photo=thumbnail, caption=caption)
     await message.delete()
@@ -44,4 +44,4 @@ def get_ytm():
     for artist in artists:
         art += artists[count]['name']+" & "
         count=count+1
-    return thumbnails, title, album, art, videourl
+    return thumbnails, title, album, art[:-3], videourl
