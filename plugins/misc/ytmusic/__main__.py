@@ -18,13 +18,13 @@ from pyrogram.enums import ParseMode
 @userge.on_cmd("ytmnow", about={
     'header': "Get Current playing on YTMusic",
     'usage': "{tr}ytmnow to Get Current playing on YTMusic",
-    'examples': "{tr}ytmnow to `header|content`"})
+    'examples': "{tr}ytmnow to {`header|content`"})
 async def telegraph_(message: Message):
     await message.edit("`processing...`")
     thumbnail, title, album, art, videourl = get_ytm()
     caption="Currently Playing on **"+message.from_user.first_name+"'s Device** Via YT Music\n\n"
     caption+=f"**{title}** From **{album}** By **{art}**\n"
-    caption+=f"🔗 **[Watch On YT]({videourl})**"
+    caption+=f"🔗 **[Watch On YT Music]({videourl})**"
     await message.reply_photo(photo=thumbnail, caption=caption)
     await message.delete()
 
@@ -34,7 +34,7 @@ def get_ytm():
     yt = ytmusicapi.YTMusic("/app/ytm.json")
     currently_playing = yt.get_history()
     cp=currently_playing[0]
-    videourl="https://www.youtube.com/watch?v="+cp['videoId']
+    videourl="https://music.youtube.com/watch?v="+cp['videoId']
     title=cp['title']
     album=cp['album']['name']
     thumbnails=f"https://img.youtube.com/vi/{cp['videoId']}/maxresdefault.jpg"
