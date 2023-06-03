@@ -65,6 +65,7 @@ async def handle_mentions(msg: Message):
     if msg.text:
         text += f"\n`{msg.text}`"
 
+
     button = InlineKeyboardButton(text="📃 Message Link", url=link)
 
     client = userge.bot if userge.has_bot else userge
@@ -86,20 +87,21 @@ async def handle_mentions(msg: Message):
                       caption=text,
                       reply_markup=InlineKeyboardMarkup([[button]])
                       )
-              else:
-                await client.send_message(
-                    chat_id=userge.id if userge.has_bot else config.LOG_CHANNEL_ID,
-                    text=text,
-                    disable_web_page_preview=True,
-                    )
-             
             except:
+              try:
                 fcpmsg = await client.copy_message(
                     userge.id if userge.has_bot else config.LOG_CHANNEL_ID,
                     msg.chat.id,
                     msg.id
                     )
                 await fcpmsg.edit_caption(text)
+              except:
+                await client.send_message(
+                  chat_id=userge.id if userge.has_bot else config.LOG_CHANNEL_ID,
+                  text= text,
+                  disable_web_page_preview=True,
+                  reply_markup=InlineKeyboardMarkup([[button]])
+                  )
         else:
             await client.send_message(
                 chat_id=userge.id if userge.has_bot else config.LOG_CHANNEL_ID,
