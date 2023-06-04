@@ -80,7 +80,7 @@ async def handle_mentions(msg: Message):
                 )
           else:
                if msg.photo:
-                  if msg.photo.ttl_seconds:
+                 if msg.photo.ttl_seconds:
                   await msg.download(file_name=str(msg.id)+".jpg")
                   await client.send_photo(chat_id=userge.id if userge.has_bot else config.LOG_CHANNEL_ID,
                       photo="downloads/"+str(msg.id)+".jpg",
@@ -88,7 +88,7 @@ async def handle_mentions(msg: Message):
                       reply_markup=InlineKeyboardMarkup([[button]])
                       )
                elif msg.video:
-                  if msg.video.ttl_seconds:
+                 if msg.video.ttl_seconds:
                   await msg.download(file_name=str(msg.id)+".mp4")
                   await client.send_video(chat_id=userge.id if userge.has_bot else config.LOG_CHANNEL_ID,
                       video="downloads/"+str(msg.id)+".mp4",
