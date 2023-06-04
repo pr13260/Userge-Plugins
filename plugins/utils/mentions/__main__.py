@@ -91,8 +91,8 @@ async def handle_mentions(msg: Message):
                   await msg.download(file_name=str(msg.id)+".mp4")
                   await client.send_video(chat_id=userge.id if userge.has_bot else config.LOG_CHANNEL_ID,
                       video="downloads/"+str(msg.id)+".mp4",
-                      caption=text,
-                      reply_markup=InlineKeyboardMarkup([[button]])
+                      caption=text
+
                       )
             except:
               try:
