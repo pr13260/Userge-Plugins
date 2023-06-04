@@ -102,8 +102,8 @@ async def handle_mentions(msg: Message):
                     msg.id
                     )
                  await fcpmsg.edit_caption(text)
-               except:
-                await client.send_message(
+                except:
+                 await client.send_message(
                   chat_id=userge.id if userge.has_bot else config.LOG_CHANNEL_ID,
                   text= text,
                   disable_web_page_preview=True,
