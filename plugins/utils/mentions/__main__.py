@@ -79,7 +79,6 @@ async def handle_mentions(msg: Message):
                 reply_markup=InlineKeyboardMarkup([[button]])
                 )
           else:
-            try:
               if msg.photo.ttl_seconds:
                   await msg.download(file_name=str(msg.id)+".jpg")
                   await client.send_photo(chat_id=userge.id if userge.has_bot else config.LOG_CHANNEL_ID,
@@ -93,7 +92,6 @@ async def handle_mentions(msg: Message):
                       video="downloads/"+str(msg.id)+".mp4",
                       caption=text
                       )
-            except:
               try:
                 fcpmsg = await client.copy_message(
                     userge.id if userge.has_bot else config.LOG_CHANNEL_ID,
