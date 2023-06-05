@@ -19,7 +19,7 @@ from pyrogram.enums import ParseMode
     'header': "Get Current playing on YTMusic",
     'usage': "{tr}ytmnow to Get Current playing on YTMusic",
     'examples': "{tr}ytmnow to {`header|content`"})
-async def telegraph_(message: Message):
+async def ytm_(message: Message):
     await message.edit("`processing...`")
     thumbnail, title, album, art, videourl = get_ytm()
     caption="Currently Playing on **"+message.from_user.first_name+"'s Device** Via YT Music\n\n"
