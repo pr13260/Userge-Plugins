@@ -56,14 +56,18 @@ async def autobuyspl(msg: Message):
 async def fastly_handler(msg: Message):
  if "🌴 New character is available for purchase" in msg.caption:
   if "Example : /purchase [char_name]" in msg.caption:
-    text = msg.caption.split("\n")[2].strip().split(":")[1].strip().split("[")[0].strip()
+    textr=await msg.click(0)
+    try:
+        text = textr.message.split("{")[0].strip()
+    except:
+        text = extr.message
     parsed = "/purchase "+text
     try:
         text = parsed
         text = text.replace("\n", "").replace("\r", "").replace("{🤵🏻‍♂️}", "")
         if text:
                 await sleep(1)
-                y=await msg.reply_text(text.capitalize())
+                y=await msg.reply_text(text)
                 await sleep(2)
                 await y.delete()
                 await CHANNEL.log(f'Auto Buy Spl Responded in {msg.chat.title} [{msg.chat.id}] \nIt bought {text}')
