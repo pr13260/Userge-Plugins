@@ -63,7 +63,9 @@ async def fastly_handler(msg: Message):
         text = text.replace("\n", "").replace("\r", "").replace("{🤵🏻‍♂️}", "")
         if text:
                 await sleep(1)
-                await msg.reply_text(text.capitalize())
+                y=await msg.reply_text(text.capitalize())
+                await sleep(2)
+                await y.delete()
                 await CHANNEL.log(f'Auto Buy Spl Responded in {msg.chat.title} [{msg.chat.id}] \nIt bought {text}')
     except Exception as e_x:  # pylint: disable=broad-except
         await CHANNEL.log(str(e_x))
