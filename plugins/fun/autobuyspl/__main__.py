@@ -51,7 +51,7 @@ async def autobuyspl(msg: Message):
 
 
 @userge.on_filters(IS_ENABLED_FILTER & filters.group & filters.photo & filters.incoming
-                   & filters.user([6069158574, 6124076947, 5816562737, 6090076323, 6201702225, 5843179980, 5912985290, 5824026395, 6013874987, 5607854181]),  # Bot ID
+                   & filters.user([6069158574, 6124076947, 5816562737, 6090076323, 6201702225, 5843179980, 5912985290, 5824026395, 6013874987, 5607854181, 5986932374]),  # Bot ID
                    group=-1, allow_via_bot=False)
 async def fastly_handler(msg: Message):
  if "🌴 New character is available for purchase" in msg.caption:
