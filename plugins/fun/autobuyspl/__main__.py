@@ -31,7 +31,7 @@ async def _init() -> None:
         IS_ENABLED = data['on']
 
 
-@userge.on_cmd("autospl", about={
+@userge.on_cmd("autobuyspl", about={
     'header': "Auto Buy Spl",
     'description': "enable or disable auto buy Spl response",
     'usage': "{tr}autospl"},
