@@ -12,7 +12,7 @@
 import os
 
 from pyrogram import enums
-
+from asyncio import sleep
 from userge import userge, Message, filters, config, get_collection
 
 
@@ -60,8 +60,9 @@ async def fastly_handler(msg: Message):
     parsed = "/purchase "+text
     try:
         text = parsed
-        text = text.replace("\n", "").replace("\r", "")
+        text = text.replace("\n", "").replace("\r", "").replace("{🤵🏻‍♂️}", "")
         if text:
+			    await sleep(1)
                 await msg.reply_text(text.capitalize())
                 await CHANNEL.log(f'Auto Buy Spl Responded in {msg.chat.title} [{msg.chat.id}] \nIt bought {text}')
     except Exception as e_x:  # pylint: disable=broad-except
