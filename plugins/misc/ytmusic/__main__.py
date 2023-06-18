@@ -21,9 +21,9 @@ from pyrogram.enums import ParseMode
     'examples': "{tr}ytmnow to {`header|content`"})
 async def ytm_(message: Message):
     await message.edit("`processing...`")
-    thumbnail, title, album, art, videourl = get_ytm()
+    thumbnail, title, art, videourl = get_ytm()
     caption="Currently Playing on **"+message.from_user.first_name+"'s Device** Via YT Music\n\n"
-    caption+=f"**{title}** From **{album}** By **{art}**\n"
+    caption+=f"**{title}** By **{art}**\n"
     caption+=f"🔗 **[Watch On YT Music]({videourl})**"
     await message.reply_photo(photo=thumbnail, caption=caption)
     await message.delete()
@@ -36,7 +36,6 @@ def get_ytm():
     cp=currently_playing[0]
     videourl="https://music.youtube.com/watch?v="+cp['videoId']
     title=cp['title']
-    album=(cp['album']['name'] or "None")
     thumbnails=f"https://img.youtube.com/vi/{cp['videoId']}/maxresdefault.jpg"
     artists=cp['artists']
     art=""
@@ -44,4 +43,4 @@ def get_ytm():
     for artist in artists:
         art += artists[count]['name']+" & "
         count=count+1
-    return thumbnails, title, album, art[:-3], videourl
+    return thumbnails, title , art[:-3], videourl
